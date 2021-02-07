@@ -53,7 +53,13 @@ public class WordSpout implements IRichSpout {
     @Override
     public void nextTuple() {
         int index = RandomUtils.nextInt(6);
-        collector.emit(new Values(strs[index]));
+        try {
+            Thread.sleep(30);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 //        System.out.println("spout ***************nextTuple() : " + strs[index]);
     }
 
