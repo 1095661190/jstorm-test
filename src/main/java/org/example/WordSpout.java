@@ -2,15 +2,15 @@ package org.example;
 
 import backtype.storm.spout.SpoutOutputCollector;
 import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.IRichSpout;
 import backtype.storm.topology.OutputFieldsDeclarer;
+import backtype.storm.topology.base.BaseRichSpout;
 import backtype.storm.tuple.Fields;
 import java.util.Map;
 import org.apache.commons.lang.math.RandomUtils;
 import backtype.storm.tuple.Values;
 
 
-public class WordSpout implements IRichSpout {
+public class WordSpout extends BaseRichSpout {
 
 
     // 一定要 生成 一个 serialVersionUID，因为这些class 都是要经过序列化的
@@ -53,14 +53,17 @@ public class WordSpout implements IRichSpout {
     @Override
     public void nextTuple() {
         int index = RandomUtils.nextInt(6);
+
         try {
-            Thread.sleep(30);
+            Thread.sleep(5);
         }catch (Exception e){
             e.printStackTrace();
         }
+        collector.emit(new Values(strs[index]));
 
 
-//        System.out.println("spout ***************nextTuple() : " + strs[index]);
+
+        System.out.println("spout ***************nextTuple() : " + strs[index]);
     }
 
     @Override
@@ -80,13 +83,15 @@ public class WordSpout implements IRichSpout {
 
     @Override
     public void ack(Object msgId) {
-
+        super.ack(msgId);
     }
 
     @Override
     public void fail(Object msgId) {
-
+        super.fail(msgId);
     }
+
+
 
     @Override
     public Map<String, Object> getComponentConfiguration() {
