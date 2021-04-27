@@ -51,6 +51,8 @@ public class RemoteTopology {
 
         System.out.println("..............");
         System.out.println("test..............");
+        System.out.println("test2..............");
+        System.out.println("test3..............");
 
     }
 
