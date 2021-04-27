@@ -49,6 +49,8 @@ public class RemoteTopology {
         StormSubmitter.submitTopology("streamName", conf,builder.createTopology());
         //提交topology
 
+        System.out.println("test..............");
+
     }
 
 
