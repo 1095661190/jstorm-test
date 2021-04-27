@@ -21,7 +21,9 @@ public class WordSpout extends BaseRichSpout {
 
     public WordSpout() {
         super();
-        System.out.println("WordSpout()****************************");
+//        System.out.println("WordSpout()****************************");
+        System.out.println("..............");
+        System.out.println("test..............");
     }
 
     /**
